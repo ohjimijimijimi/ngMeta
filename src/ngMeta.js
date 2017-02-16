@@ -32,7 +32,7 @@
         useTitleSuffix: false
       };
 
-      function Meta($rootScope) {
+      function Meta($rootScope, $transitions) {
 
         /**
          * @ngdoc method
@@ -190,7 +190,9 @@
         var init = function() {
           $rootScope.ngMeta = {};
           $rootScope.$on('$routeChangeSuccess', update);
-          $rootScope.$on('$stateChangeSuccess', update);
+          $transitions.onSuccess({}, function (trans) {
+            update(null, trans.$to());
+          });
         };
 
         return {
