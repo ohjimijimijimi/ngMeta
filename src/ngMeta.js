@@ -308,8 +308,8 @@
       };
 
 
-      this.$get = function($rootScope) {
-        return new Meta($rootScope);
+      this.$get = function($rootScope, $transitions) {
+        return new Meta($rootScope, $transitions);
       };
     });
 }));
